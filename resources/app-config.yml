@@ -1,0 +1,29 @@
+server:
+  # hostname: localhost
+  port: 8088
+  env: release # release/debug/test
+
+db:
+  sqlite:
+    sqlite01: 
+      enable: true # 是否启用数据库配置
+      file: file::memory:?cache=shared # 这里使用内存数据库
+      connPool: 
+        enable: true # 是否启用连接池
+        maxIdleConns: 1 # 用于设置连接池中空闲连接的最大数量
+        maxOpenConns: 3 # 设置打开数据库连接的最大数量
+        connMaxLifetime: 1h # 设置了连接可复用的最大时间
+  mysql:
+    mysql01: 
+      enable: false
+      host: 127.0.0.1
+      port: 3306
+      user: root
+      password: 123
+      database: alarms
+      charset: utf8mb4
+      connPool: 
+        enable: true
+        maxIdleConns: 1
+        maxOpenConns: 3
+        connMaxLifetime: 1h
